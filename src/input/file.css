@@ -1,0 +1,39 @@
+/*
+ * ::file-selector-button 的原生样式包括 margin、padding、border、background-color、color 和 font。
+ * :disabled 时使用原生 color、background-color 和 border-color。
+ * https://html.spec.whatwg.org/multipage/rendering.html#the-input-element-as-a-file-upload-control
+ */
+@layer unism {
+  :where(:root) {
+    --input-file-selector-button-background-color: light-dark(#f8fafc, #172235);
+    --input-file-selector-button-color: light-dark(#1e293b, #e2e8f0);
+    --input-file-selector-button-margin-inline-end: 0.75rem;
+    --input-file-selector-button-padding: 0.375rem 0.75rem;
+  }
+
+  :where(input)::file-selector-button {
+    cursor: inherit;
+    margin-inline-end: var(--input-file-selector-button-margin-inline-end);
+    padding: var(--input-file-selector-button-padding);
+    border: var(
+        --input-file-selector-button-border-width,
+        var(--input-border-width)
+      )
+      solid
+      var(--input-file-selector-button-border-color, var(--input-border-color));
+    border-radius: var(
+      --input-file-selector-button-border-radius,
+      var(--input-border-radius)
+    );
+    background-color: var(--input-file-selector-button-background-color);
+    color: var(--input-file-selector-button-color);
+    font: inherit;
+    line-height: var(--input-line-height);
+  }
+
+  :where(input:disabled)::file-selector-button {
+    color: revert-layer;
+    background-color: revert-layer;
+    border-color: revert-layer;
+  }
+}

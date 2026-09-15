@@ -1,0 +1,10 @@
+/*
+ * ::-webkit-search-decoration 是搜索输入的原生装饰部件。
+ * appearance: none 移除该装饰，输入框的其余样式在 input.css。
+ * https://github.com/WebKit/WebKit/blob/main/Source/WebCore/css/html.css
+ */
+@layer unism {
+  :where(input[type='search'])::-webkit-search-decoration {
+    appearance: none;
+  }
+}

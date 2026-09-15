@@ -1,0 +1,76 @@
+/*
+ * input[type='range'] 的样式涉及 inline-size、block-size 和 background-color。
+ * Chromium 和 WebKit 的轨道与滑块对应 ::-webkit-slider-runnable-track、::-webkit-slider-thumb，
+ * Firefox 对应 ::-moz-range-track、::-moz-range-thumb。数值、方向和键盘交互由浏览器处理。
+ * https://html.spec.whatwg.org/multipage/rendering.html#the-input-element-as-a-range-control
+ */
+@layer unism {
+  :where(:root) {
+    --input-range-track-background-color: light-dark(#8494a7, #64748b);
+    --input-range-block-size: 1.5rem;
+    --input-range-thumb-block-size: 1rem;
+    --input-range-thumb-inline-size: 1rem;
+    --input-range-track-block-size: 0.25rem;
+    --input-range-inline-size: 10rem;
+  }
+
+  :where(input[type='range']) {
+    inline-size: var(--input-range-inline-size);
+    block-size: var(--input-range-block-size);
+    @media (forced-colors: none) {
+      appearance: none;
+      background: transparent;
+
+      &::-webkit-slider-runnable-track {
+        block-size: var(--input-range-track-block-size);
+        border-radius: var(
+          --input-range-track-border-radius,
+          var(--input-border-radius)
+        );
+        background-color: var(--input-range-track-background-color);
+      }
+      &::-moz-range-track {
+        block-size: var(--input-range-track-block-size);
+        border-radius: var(
+          --input-range-track-border-radius,
+          var(--input-border-radius)
+        );
+        background-color: var(--input-range-track-background-color);
+      }
+      &::-webkit-slider-thumb {
+        appearance: none;
+        inline-size: var(--input-range-thumb-inline-size);
+        block-size: var(--input-range-thumb-block-size);
+        margin-block-start: calc(
+          (
+              var(--input-range-track-block-size) -
+                var(--input-range-thumb-block-size)
+            ) /
+            2
+        );
+        border: 0;
+        border-radius: 50%;
+        background-color: var(
+          --input-range-thumb-background-color,
+          light-dark(
+            var(--accent-color),
+            color-mix(in oklab, var(--accent-color), white 15%)
+          )
+        );
+      }
+      &::-moz-range-thumb {
+        inline-size: var(--input-range-thumb-inline-size);
+        block-size: var(--input-range-thumb-block-size);
+        border: 0;
+        border-radius: 50%;
+        background-color: var(
+          --input-range-thumb-background-color,
+          light-dark(
+            var(--accent-color),
+            color-mix(in oklab, var(--accent-color), white 15%)
+          )
+        );
+      }
+    }
+  }
+}

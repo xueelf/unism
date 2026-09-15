@@ -1,0 +1,92 @@
+/*
+ * input[type='checkbox'][role='switch'] 保留 checkbox 的状态和表单行为。
+ * ::before 绘制滑块，其 inline-size 和 block-size 独立于轨道。
+ * forced-colors: active 时使用原生复选框。
+ */
+@layer unism {
+  :where(:root) {
+    --input-switch-background-color: light-dark(#8494a7, #64748b);
+    --input-switch-border-color: light-dark(#8494a7, #64748b);
+    --input-switch-disabled-border-color: GrayText;
+    --input-switch-disabled-background-color: GrayText;
+    --input-switch-thumb-background-color: #ffffff;
+    --input-switch-thumb-inline-size: 0.875rem;
+    --input-switch-thumb-block-size: 0.875rem;
+    --input-switch-block-size: 1.125rem;
+    --input-switch-border-radius: calc(infinity * 1px);
+    --input-switch-inline-size: 2rem;
+  }
+
+  :where(input[type='checkbox'][role='switch']) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    inline-size: var(--input-switch-inline-size);
+    block-size: var(--input-switch-block-size);
+    border-width: var(
+      --input-switch-border-width,
+      var(--input-checkbox-border-width, var(--input-border-width))
+    );
+    border-color: var(--input-switch-border-color);
+    border-radius: var(--input-switch-border-radius);
+    background-color: var(--input-switch-background-color);
+
+    &::before {
+      content: '';
+      flex: none;
+      position: relative;
+      inline-size: var(--input-switch-thumb-inline-size);
+      block-size: var(--input-switch-thumb-block-size);
+      /* 滑块中心对齐轨道两端的圆心。 */
+      inset-inline-start: calc(
+        (var(--input-switch-block-size) - var(--input-switch-inline-size)) / 2
+      );
+      /*
+       * 暂不启用 transition，保留以下声明供效果对比。
+       * transition: inset-inline-start 150ms ease;
+       */
+      border-radius: 50%;
+      background-color: var(--input-switch-thumb-background-color);
+    }
+    &:where(:checked) {
+      border-color: var(
+        --input-switch-checked-border-color,
+        var(
+          --input-checked-border-color,
+          light-dark(
+            var(--accent-color),
+            color-mix(in oklab, var(--accent-color), white 15%)
+          )
+        )
+      );
+      background-color: var(
+        --input-switch-checked-background-color,
+        var(
+          --input-checked-background-color,
+          light-dark(
+            var(--accent-color),
+            color-mix(in oklab, var(--accent-color), white 15%)
+          )
+        )
+      );
+
+      &::before {
+        inset-inline-start: calc(
+          (var(--input-switch-inline-size) - var(--input-switch-block-size)) / 2
+        );
+      }
+    }
+  }
+
+  :where(input[type='checkbox'][role='switch']:disabled) {
+    border-color: var(--input-switch-disabled-border-color);
+    background-color: var(--input-switch-disabled-background-color);
+  }
+
+  @media (forced-colors: active) {
+    :where(input[type='checkbox'][role='switch']) {
+      width: var(--input-checkbox-width);
+      height: var(--input-checkbox-height);
+    }
+  }
+}

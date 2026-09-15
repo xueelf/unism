@@ -1,0 +1,39 @@
+/*
+ * date、datetime-local、month、time 和 week 使用原生日期时间字段。
+ * ::-webkit-datetime-edit 系列伪元素具有 padding，::-webkit-date-and-time-value 另有 text-align。
+ * :disabled 时使用原生 color、background-color 和 border-color。
+ * https://github.com/WebKit/WebKit/blob/main/Source/WebCore/css/html.css
+ */
+@layer unism {
+  :where(input)::-webkit-date-and-time-value {
+    min-block-size: 1lh;
+    text-align: start;
+  }
+
+  /* Chromium 和 WebKit 的日期字段有额外 padding，会增加输入框的 block-size。 */
+
+  :where(input)::-webkit-datetime-edit,
+  :where(input)::-webkit-datetime-edit-fields-wrapper,
+  :where(input)::-webkit-datetime-edit-year-field,
+  :where(input)::-webkit-datetime-edit-month-field,
+  :where(input)::-webkit-datetime-edit-day-field,
+  :where(input)::-webkit-datetime-edit-hour-field,
+  :where(input)::-webkit-datetime-edit-minute-field,
+  :where(input)::-webkit-datetime-edit-second-field,
+  :where(input)::-webkit-datetime-edit-millisecond-field,
+  :where(input)::-webkit-datetime-edit-meridiem-field {
+    padding-block: 0;
+  }
+
+  :where(
+    input[type='date'],
+    input[type='datetime-local'],
+    input[type='month'],
+    input[type='time'],
+    input[type='week']
+  ):where(:disabled) {
+    color: revert-layer;
+    background-color: revert-layer;
+    border-color: revert-layer;
+  }
+}

@@ -1,0 +1,154 @@
+/*
+ * input 的原生默认样式包括 appearance、display、padding、border、
+ * background-color、color、font 和 cursor，margin、box-sizing、width 和 height 随 type 不同。
+ * ::placeholder、:disabled 和 :focus-visible 的样式取决于输入类型。
+ * 按钮型 input 的专属规则在 button.css，共享的按钮声明在 ../button.css。
+ * https://html.spec.whatwg.org/multipage/rendering.html#the-input-element-as-a-text-entry-widget
+ */
+@layer unism {
+  :where(:root) {
+    --input-background-color: light-dark(#ffffff, #0f172a);
+    --input-border-color: light-dark(#8494a7, #64748b);
+    --input-border-width: 1px;
+    --input-color: light-dark(#1e293b, #e2e8f0);
+    --input-disabled-border-color: GrayText;
+    --input-checked-disabled-background-color: GrayText;
+    --input-disabled-opacity: 0.5;
+    --input-font-size: 0.875rem;
+    --input-line-height: 1.5;
+    --input-padding: 0.375rem 0.75rem;
+    --input-placeholder-color: light-dark(#475569, #94a3b8);
+    --input-border-radius: 0.375rem;
+    --input-font-weight: 400;
+  }
+
+  :where(input) {
+    margin: 0;
+    font: inherit;
+    letter-spacing: inherit;
+    /*
+     * 暂不启用 transition，保留以下声明供效果对比。
+     * transition-property: background-color, border-color, color;
+     * transition-duration: 150ms;
+     */
+
+    font-family: var(--input-font-family, inherit);
+    font-size: var(--input-font-size);
+  }
+
+  :where(input[type='checkbox'], input[type='radio'], input[type='range']) {
+    accent-color: light-dark(
+      var(--accent-color),
+      color-mix(in oklab, var(--accent-color), white 15%)
+    );
+  }
+
+  :where(
+    input:is(
+      [type='checkbox'],
+      [type='radio'],
+      [type='range'],
+      [type='color'],
+      [type='file'],
+      [type='image']
+    )
+  ) {
+    cursor: pointer;
+  }
+
+  :where(input):where(:disabled) {
+    cursor: not-allowed;
+  }
+
+  :where(
+    input:not(
+      [type='checkbox'],
+      [type='radio'],
+      [type='range'],
+      [type='button'],
+      [type='submit'],
+      [type='reset'],
+      [type='image'],
+      [type='file'],
+      [type='hidden']
+    )
+  ) {
+    min-inline-size: 0;
+
+    padding: var(--input-padding);
+    border: var(--input-border-width) solid var(--input-border-color);
+    border-radius: var(--input-border-radius);
+    background-color: var(--input-background-color);
+    color: var(--input-color);
+    font-weight: var(--input-font-weight);
+    line-height: var(--input-line-height);
+  }
+
+  :where(
+    input:not(
+      [type='checkbox'],
+      [type='radio'],
+      [type='range'],
+      [type='image'],
+      [type='button'],
+      [type='submit'],
+      [type='reset']
+    )
+  ) {
+    appearance: none;
+  }
+
+  :where(input)::placeholder {
+    opacity: 1;
+
+    color: var(--input-placeholder-color);
+  }
+
+  :where(input[type='checkbox'], input[type='radio']) {
+    appearance: none;
+    display: inline-grid;
+    place-content: center;
+    vertical-align: middle;
+  }
+
+  :where(
+    input:not([type='button'], [type='submit'], [type='reset']):focus-visible
+  ) {
+    outline-color: var(
+      --input-focus-outline-color,
+      light-dark(
+        var(--accent-color),
+        color-mix(in oklab, var(--accent-color), white 35%)
+      )
+    );
+  }
+
+  :where(
+    input:disabled:not(
+        [type='hidden'],
+        [type='button'],
+        [type='submit'],
+        [type='reset'],
+        [type='file'],
+        [type='checkbox'],
+        [type='radio'],
+        [type='date'],
+        [type='datetime-local'],
+        [type='month'],
+        [type='time'],
+        [type='week']
+      )
+  ) {
+    opacity: var(--input-disabled-opacity);
+  }
+
+  @media (forced-colors: active) {
+    :where(input):where(:focus-visible) {
+      outline-color: Highlight;
+    }
+  }
+
+  :where(input[type='hidden']) {
+    display: none;
+  }
+}

@@ -1,0 +1,75 @@
+/*
+ * input[type='radio'] 的原生外观包括 appearance、margin、width、height 和 border。
+ * :checked 的圆点和 :disabled 的外观由浏览器或系统主题绘制。
+ * 与 checkbox 共用的规则在 input.css。
+ * https://html.spec.whatwg.org/multipage/rendering.html#the-input-element-as-a-checkbox-and-radio-button-widgets
+ */
+@layer unism {
+  :where(:root) {
+    --input-radio-margin-inline-end: 0.5rem;
+    --input-radio-height: 1rem;
+    --input-radio-width: 1rem;
+    --input-radio-indicator-background-color: #ffffff;
+    --input-radio-border-radius: 50%;
+  }
+
+  :where(input[type='radio']) {
+    width: var(--input-radio-width);
+    height: var(--input-radio-height);
+    margin-inline-end: var(--input-radio-margin-inline-end);
+    border: var(--input-radio-border-width, var(--input-border-width)) solid
+      var(--input-radio-border-color, var(--input-border-color));
+    border-radius: var(--input-radio-border-radius);
+    background-color: var(
+      --input-radio-background-color,
+      var(--input-background-color)
+    );
+  }
+
+  :where(input[type='radio']:checked) {
+    border-color: var(
+      --input-radio-checked-border-color,
+      var(
+        --input-checked-border-color,
+        light-dark(
+          var(--accent-color),
+          color-mix(in oklab, var(--accent-color), white 15%)
+        )
+      )
+    );
+    background-color: var(
+      --input-radio-checked-background-color,
+      var(
+        --input-checked-background-color,
+        light-dark(
+          var(--accent-color),
+          color-mix(in oklab, var(--accent-color), white 15%)
+        )
+      )
+    );
+    &::before {
+      content: '';
+      background-color: var(--input-radio-indicator-background-color);
+    }
+  }
+
+  :where(input[type='radio']:checked)::before {
+    inline-size: 0.45em;
+    block-size: 0.45em;
+    border-radius: 50%;
+  }
+
+  :where(input[type='radio']:disabled) {
+    border-color: var(
+      --input-radio-disabled-border-color,
+      var(--input-disabled-border-color)
+    );
+
+    &:where(:checked) {
+      background-color: var(
+        --input-radio-checked-disabled-background-color,
+        var(--input-checked-disabled-background-color)
+      );
+    }
+  }
+}

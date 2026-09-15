@@ -1,0 +1,84 @@
+/*
+ * input[type='checkbox'] 的原生外观包括 appearance、margin、width、height 和 border。
+ * :checked、:indeterminate 和 :disabled 的外观由浏览器或系统主题绘制。
+ * 与 radio 共用的规则在 input.css，开关规则在 switch.css。
+ * https://html.spec.whatwg.org/multipage/rendering.html#the-input-element-as-a-checkbox-and-radio-button-widgets
+ */
+@layer unism {
+  :where(:root) {
+    --input-checkbox-margin-inline-end: 0.5rem;
+    --input-checkbox-height: 1rem;
+    --input-checkbox-width: 1rem;
+    --input-checkbox-indicator-background-color: #ffffff;
+    --input-checkbox-border-radius: 0.25rem;
+  }
+
+  :where(input[type='checkbox']) {
+    width: var(--input-checkbox-width);
+    height: var(--input-checkbox-height);
+    margin-inline-end: var(--input-checkbox-margin-inline-end);
+    border: var(--input-checkbox-border-width, var(--input-border-width)) solid
+      var(--input-checkbox-border-color, var(--input-border-color));
+    border-radius: var(--input-checkbox-border-radius);
+    background-color: var(
+      --input-checkbox-background-color,
+      var(--input-background-color)
+    );
+  }
+
+  :where(
+    input[type='checkbox']:not([role='switch']):is(:checked, :indeterminate)
+  ) {
+    border-color: var(
+      --input-checkbox-checked-border-color,
+      var(
+        --input-checked-border-color,
+        light-dark(
+          var(--accent-color),
+          color-mix(in oklab, var(--accent-color), white 15%)
+        )
+      )
+    );
+    background-color: var(
+      --input-checkbox-checked-background-color,
+      var(
+        --input-checked-background-color,
+        light-dark(
+          var(--accent-color),
+          color-mix(in oklab, var(--accent-color), white 15%)
+        )
+      )
+    );
+    &::before {
+      content: '';
+      background-color: var(--input-checkbox-indicator-background-color);
+    }
+  }
+
+  :where(
+    input[type='checkbox']:not([role='switch'], :indeterminate):checked
+  )::before {
+    inline-size: 0.65em;
+    block-size: 0.65em;
+    clip-path: polygon(14% 44%, 0 59%, 38% 96%, 100% 20%, 84% 7%, 36% 68%);
+  }
+
+  :where(input[type='checkbox']:not([role='switch']):indeterminate)::before {
+    inline-size: 0.65em;
+    block-size: 0.15em;
+  }
+
+  :where(input[type='checkbox']:disabled) {
+    border-color: var(
+      --input-checkbox-disabled-border-color,
+      var(--input-disabled-border-color)
+    );
+
+    &:where(:checked, :indeterminate) {
+      background-color: var(
+        --input-checkbox-checked-disabled-background-color,
+        var(--input-checked-disabled-background-color)
+      );
+    }
+  }
+}

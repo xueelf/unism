@@ -1,0 +1,35 @@
+/*
+ * input[type='color'] 的原生样式包括 width、height、padding，内部色块另有 border。
+ * ::-webkit-color-swatch 和 ::-moz-color-swatch 对应色块，
+ * ::-webkit-color-swatch-wrapper 有独立的 padding。
+ * 颜色选择器由浏览器提供。
+ * https://html.spec.whatwg.org/multipage/rendering.html#the-input-element-as-a-color-well
+ */
+@layer unism {
+  :where(:root) {
+    --input-color-width: calc(1lh + 0.75rem + 2px);
+    --input-color-height: calc(1lh + 0.75rem + 2px);
+    --input-color-padding: 0.25rem;
+    --input-color-swatch-border-radius: 0.125rem;
+  }
+
+  :where(input[type='color']) {
+    width: var(--input-color-width);
+    height: var(--input-color-height);
+    padding: var(--input-color-padding);
+
+    &::-webkit-color-swatch-wrapper {
+      padding: 0;
+    }
+    &::-webkit-color-swatch {
+      border: var(--input-color-swatch-border-width, var(--input-border-width))
+        solid var(--input-color-swatch-border-color, var(--input-border-color));
+      border-radius: var(--input-color-swatch-border-radius);
+    }
+    &::-moz-color-swatch {
+      border: var(--input-color-swatch-border-width, var(--input-border-width))
+        solid var(--input-color-swatch-border-color, var(--input-border-color));
+      border-radius: var(--input-color-swatch-border-radius);
+    }
+  }
+}
