@@ -1,0 +1,69 @@
+/*
+ * textarea 的默认样式包括 appearance、display、padding、border、background-color、
+ * color、font、resize、white-space、word-wrap 和 cursor。
+ * ::placeholder、:disabled 和 :focus-visible 另有原生样式。
+ * https://html.spec.whatwg.org/multipage/rendering.html#the-textarea-element-2
+ */
+@layer unism {
+  :where(:root) {
+    --textarea-background-color: light-dark(#ffffff, #0f172a);
+    --textarea-border-color: light-dark(#8494a7, #64748b);
+    --textarea-border-width: 1px;
+    --textarea-color: light-dark(#1e293b, #e2e8f0);
+    --textarea-disabled-opacity: 0.5;
+    --textarea-font-size: 0.875rem;
+    --textarea-line-height: 1.5;
+    --textarea-padding: 0.375rem 0.75rem;
+    --textarea-placeholder-color: light-dark(#475569, #94a3b8);
+    --textarea-border-radius: 0.375rem;
+    --textarea-font-weight: 400;
+  }
+
+  :where(textarea) {
+    margin: 0;
+    font: inherit;
+    letter-spacing: inherit;
+    /*
+     * 暂不启用 transition，保留以下声明供效果对比。
+     * transition-property: background-color, border-color, color;
+     * transition-duration: 150ms;
+     */
+    min-inline-size: 0;
+    appearance: none;
+    font-family: var(--textarea-font-family, inherit);
+    font-size: var(--textarea-font-size);
+    padding: var(--textarea-padding);
+    border: var(--textarea-border-width) solid var(--textarea-border-color);
+    border-radius: var(--textarea-border-radius);
+    background-color: var(--textarea-background-color);
+    color: var(--textarea-color);
+    font-weight: var(--textarea-font-weight);
+    line-height: var(--textarea-line-height);
+
+    &:where(:focus-visible) {
+      outline-color: var(
+        --textarea-focus-outline-color,
+        light-dark(
+          var(--accent-color),
+          color-mix(in oklab, var(--accent-color), white 35%)
+        )
+      );
+    }
+
+    &::placeholder {
+      opacity: 1;
+      color: var(--textarea-placeholder-color);
+    }
+
+    &:where(:disabled) {
+      cursor: not-allowed;
+      opacity: var(--textarea-disabled-opacity);
+    }
+  }
+
+  @media (forced-colors: active) {
+    :where(textarea):where(:focus-visible) {
+      outline-color: Highlight;
+    }
+  }
+}

@@ -1,0 +1,15 @@
+/*
+ * legend 的默认样式包括 padding-inline，Chromium 和 Firefox 还声明 display。
+ * WebKit 另有 border 重置，font 和 color 沿用继承值。
+ * https://html.spec.whatwg.org/multipage/rendering.html#the-fieldset-and-legend-elements
+ */
+@layer unism {
+  :where(:root) {
+    --legend-padding-inline: 0.4em;
+  }
+
+  :where(legend) {
+    max-inline-size: 100%;
+    padding-inline: var(--legend-padding-inline);
+  }
+}

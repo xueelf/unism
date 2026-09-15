@@ -1,0 +1,23 @@
+/*
+ * fieldset 的默认样式包括 display、margin-inline、border、padding-block、
+ * padding-inline 和 min-inline-size，默认 border-style 为 groove。
+ * legend 处的缺口由浏览器布局处理，border-radius 是 Unism 添加的样式。
+ * https://html.spec.whatwg.org/multipage/rendering.html#the-fieldset-and-legend-elements
+ */
+@layer unism {
+  :where(:root) {
+    --fieldset-border-color: light-dark(#8494a7, #64748b);
+    --fieldset-border-width: 1px;
+    --fieldset-border-radius: 0.5rem;
+    --fieldset-margin: 0 0 1rem;
+    --fieldset-padding: 1rem;
+  }
+
+  :where(fieldset) {
+    min-inline-size: 0;
+    margin: var(--fieldset-margin);
+    padding: var(--fieldset-padding);
+    border: var(--fieldset-border-width) solid var(--fieldset-border-color);
+    border-radius: var(--fieldset-border-radius);
+  }
+}
