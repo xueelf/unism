@@ -1,0 +1,29 @@
+/*
+ * dialog 的默认样式包括 display、position、inset、width、height、margin、border、padding、
+ * background-color 和 color，:modal 另有 overflow、max-width 和 max-height。
+ * ::backdrop 默认设置 background-color，border-radius 是 Unism 添加的样式。
+ * https://html.spec.whatwg.org/multipage/rendering.html#flow-content-3
+ */
+@layer unism {
+  :where(:root) {
+    --dialog-backdrop-background-color: #0f172a80;
+    --dialog-background-color: light-dark(#ffffff, #0f172a);
+    --dialog-border-color: light-dark(#8494a7, #64748b);
+    --dialog-border-width: 1px;
+    --dialog-border-radius: 0.5rem;
+    --dialog-color: light-dark(#1e293b, #e2e8f0);
+    --dialog-padding: 1.5rem;
+  }
+
+  :where(dialog) {
+    padding: var(--dialog-padding);
+    border: var(--dialog-border-width) solid var(--dialog-border-color);
+    border-radius: var(--dialog-border-radius);
+    background-color: var(--dialog-background-color);
+    color: var(--dialog-color);
+
+    &::backdrop {
+      background-color: var(--dialog-backdrop-background-color);
+    }
+  }
+}
