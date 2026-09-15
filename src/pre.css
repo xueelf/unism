@@ -1,0 +1,15 @@
+/*
+ * pre 的原生样式包含 display、margin-block、margin-inline、font-family、white-space 和 unicode-bidi。
+ * https://html.spec.whatwg.org/multipage/rendering.html#flow-content-3
+ */
+@layer unism {
+  :where(:root) {
+    --pre-font-family: ui-monospace, 'SFMono-Regular', Consolas, monospace;
+    --pre-margin-block: 0 1rem;
+  }
+
+  :where(pre) {
+    margin-block: var(--pre-margin-block);
+    font-family: var(--pre-font-family);
+  }
+}

@@ -1,0 +1,17 @@
+/*
+ * h3 的原生样式包含 display、margin-block、margin-inline、font-size、font-weight 和 unicode-bidi。
+ * https://html.spec.whatwg.org/multipage/rendering.html#sections-and-headings
+ */
+@layer unism {
+  :where(:root) {
+    --h3-margin-block: 1.5em 0.5em;
+    --h3-font-size: 1.5rem;
+    --h3-font-weight: 650;
+  }
+
+  :where(h3) {
+    margin-block: var(--h3-margin-block);
+    font-weight: var(--h3-font-weight);
+    font-size: var(--h3-font-size);
+  }
+}

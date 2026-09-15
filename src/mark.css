@@ -1,0 +1,15 @@
+/*
+ * mark 的原生样式包含 background-color 和 color，默认值可能使用系统色 Mark 和 MarkText。
+ * https://html.spec.whatwg.org/multipage/rendering.html#phrasing-content-3
+ */
+@layer unism {
+  :where(:root) {
+    --mark-color: currentColor;
+    --mark-background-color: light-dark(#fae6a0, #534415);
+  }
+
+  :where(mark) {
+    color: var(--mark-color);
+    background-color: var(--mark-background-color);
+  }
+}

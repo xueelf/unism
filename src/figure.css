@@ -1,0 +1,13 @@
+/*
+ * figure 的原生样式包含 display、margin-block、margin-inline 和 unicode-bidi。
+ * https://html.spec.whatwg.org/multipage/rendering.html#flow-content-3
+ */
+@layer unism {
+  :where(:root) {
+    --figure-margin-block: 0 1rem;
+  }
+
+  :where(figure) {
+    margin-block: var(--figure-margin-block);
+  }
+}

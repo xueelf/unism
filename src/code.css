@@ -1,0 +1,13 @@
+/*
+ * code 默认使用等宽 font-family，font-size、font-weight 和 color 继承父元素。
+ * https://html.spec.whatwg.org/multipage/rendering.html#phrasing-content-3
+ */
+@layer unism {
+  :where(:root) {
+    --code-font-family: ui-monospace, 'SFMono-Regular', Consolas, monospace;
+  }
+
+  :where(code) {
+    font-family: var(--code-font-family);
+  }
+}

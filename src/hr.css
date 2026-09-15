@@ -1,0 +1,20 @@
+/*
+ * hr 的原生样式包含 display、margin-block、margin-inline、overflow、
+ * border-width、border-style、color 和 unicode-bidi。
+ * 库使用 border-block-start 绘制分隔线。
+ * https://html.spec.whatwg.org/multipage/rendering.html#the-hr-element-2
+ */
+@layer unism {
+  :where(:root) {
+    --hr-border-block-start-color: light-dark(#8494a7, #64748b);
+    --hr-border-block-start-width: 1px;
+    --hr-margin-block: 2rem;
+  }
+
+  :where(hr) {
+    margin-block: var(--hr-margin-block);
+    border: 0;
+    border-block-start: var(--hr-border-block-start-width) solid
+      var(--hr-border-block-start-color);
+  }
+}

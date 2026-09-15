@@ -1,0 +1,13 @@
+/*
+ * small 默认设置 font-size: smaller，color、font-family 和 font-weight 继承父元素。
+ * https://html.spec.whatwg.org/multipage/rendering.html#phrasing-content-3
+ */
+@layer unism {
+  :where(:root) {
+    --small-font-size: 0.875em;
+  }
+
+  :where(small) {
+    font-size: var(--small-font-size);
+  }
+}

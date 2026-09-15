@@ -1,0 +1,13 @@
+/*
+ * dl 的原生样式包含 display、margin-block 和 unicode-bidi，嵌套列表另有 margin-block 规则。
+ * https://html.spec.whatwg.org/multipage/rendering.html#lists
+ */
+@layer unism {
+  :where(:root) {
+    --dl-margin-block: 0 1rem;
+  }
+
+  :where(dl) {
+    margin-block: var(--dl-margin-block);
+  }
+}

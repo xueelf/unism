@@ -1,0 +1,18 @@
+/*
+ * sup 的原生样式包含 font-size 和 vertical-align，HTML 渲染建议还列出 line-height。
+ * 库设置 position: relative、line-height: 0 和 vertical-align: baseline，避免上标撑开行距。
+ * https://html.spec.whatwg.org/multipage/rendering.html#phrasing-content-3
+ */
+@layer unism {
+  :where(:root) {
+    --sup-font-size: 0.75em;
+  }
+
+  :where(sup) {
+    position: relative;
+    line-height: 0;
+    vertical-align: baseline;
+    font-size: var(--sup-font-size);
+    inset-block-start: -0.5em;
+  }
+}

@@ -1,0 +1,18 @@
+/*
+ * h4 的原生样式包含 display、margin-block、margin-inline、font-size、font-weight 和 unicode-bidi。
+ * Gecko 显式设置 font-size: 1em，Chromium 和 WebKit 的 font-size 继承父元素。
+ * https://html.spec.whatwg.org/multipage/rendering.html#sections-and-headings
+ */
+@layer unism {
+  :where(:root) {
+    --h4-margin-block: 1.5em 0.5em;
+    --h4-font-size: 1.25rem;
+    --h4-font-weight: 650;
+  }
+
+  :where(h4) {
+    margin-block: var(--h4-margin-block);
+    font-weight: var(--h4-font-weight);
+    font-size: var(--h4-font-size);
+  }
+}

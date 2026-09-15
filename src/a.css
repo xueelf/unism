@@ -1,0 +1,51 @@
+/*
+ * a:any-link 的原生样式包含 color、text-decoration 和 cursor，
+ * :focus-visible 提供 outline，部分内核还设置 outline-offset。
+ * text-decoration 和 outline-style 保留原生行为，color 和 outline-color 随主题调整。
+ * https://html.spec.whatwg.org/multipage/rendering.html#phrasing-content-3
+ */
+@layer unism {
+  :where(a:any-link) {
+    color: var(
+      --a-color,
+      light-dark(
+        var(--accent-color),
+        color-mix(in oklab, var(--accent-color), white 50%)
+      )
+    );
+
+    &:where(:visited) {
+      color: var(
+        --a-visited-color,
+        var(
+          --a-color,
+          light-dark(
+            var(--accent-color),
+            color-mix(in oklab, var(--accent-color), white 50%)
+          )
+        )
+      );
+    }
+    &:where(:active) {
+      color: var(
+        --a-active-color,
+        var(
+          --a-color,
+          light-dark(
+            var(--accent-color),
+            color-mix(in oklab, var(--accent-color), white 50%)
+          )
+        )
+      );
+    }
+    &:where(:focus-visible) {
+      outline-color: var(
+        --a-focus-outline-color,
+        light-dark(
+          var(--accent-color),
+          color-mix(in oklab, var(--accent-color), white 50%)
+        )
+      );
+    }
+  }
+}

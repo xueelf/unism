@@ -1,0 +1,17 @@
+/*
+ * h1 的原生样式包含 display、margin-block、margin-inline、font-size、font-weight 和 unicode-bidi。
+ * https://html.spec.whatwg.org/multipage/rendering.html#sections-and-headings
+ */
+@layer unism {
+  :where(:root) {
+    --h1-margin-block: 1.5em 0.5em;
+    --h1-font-size: 3rem;
+    --h1-font-weight: 650;
+  }
+
+  :where(h1) {
+    margin-block: var(--h1-margin-block);
+    font-weight: var(--h1-font-weight);
+    font-size: var(--h1-font-size);
+  }
+}
