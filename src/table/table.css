@@ -1,0 +1,11 @@
+/*
+ * table 的原生样式包含 display、border-collapse、border-spacing、box-sizing、
+ * text-indent 和 unicode-bidi，部分实现还设置 border-color。
+ * border-collapse: collapse 属于库样式，原生默认值为 separate。
+ * https://html.spec.whatwg.org/multipage/rendering.html#tables
+ */
+@layer unism {
+  :where(table) {
+    border-collapse: collapse;
+  }
+}

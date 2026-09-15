@@ -1,0 +1,18 @@
+/*
+ * td 的原生样式包含 display、vertical-align、padding 和 unicode-bidi，Gecko 还设置 text-align。
+ * 部分内核通过默认的 cellpadding 映射设置 padding。border-block-end 是库添加的分隔线。
+ * https://html.spec.whatwg.org/multipage/rendering.html#tables
+ */
+@layer unism {
+  :where(:root) {
+    --td-border-block-end-color: light-dark(#8494a7, #64748b);
+    --td-border-block-end-width: 1px;
+    --td-padding: 0.625rem 0.75rem;
+  }
+
+  :where(td) {
+    padding: var(--td-padding);
+    border-block-end: var(--td-border-block-end-width) solid
+      var(--td-border-block-end-color);
+  }
+}
