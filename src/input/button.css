@@ -1,0 +1,10 @@
+/*
+ * 按钮型 input 默认使用 appearance: auto，设为 none 后使用共享的按钮样式。
+ * padding、border、background-color 和 font 等声明与 --button-* 变量集中在 ../button.css。
+ * https://html.spec.whatwg.org/multipage/rendering.html#the-input-element-as-a-button
+ */
+@layer unism {
+  :where(input[type='button'], input[type='submit'], input[type='reset']) {
+    appearance: none;
+  }
+}

@@ -1,0 +1,104 @@
+/*
+ * button 与按钮型 input 的原生样式包括 padding、border、background-color、
+ * color、font、text-align、appearance 和 box-sizing。
+ * :hover、:active、:disabled 的 color、background-color 和 border 由浏览器或系统主题提供。
+ * 两种 HTML 写法共用 --button-* 变量。
+ * https://html.spec.whatwg.org/multipage/rendering.html#the-button-element-2
+ */
+@layer unism {
+  :where(:root) {
+    --button-background-color: light-dark(#ffffff, #1e293b);
+    --button-border-color: light-dark(#cbd5e1, #475569);
+    --button-border-width: 1px;
+    --button-color: light-dark(#1e293b, #e2e8f0);
+    --button-font-size: 0.875rem;
+    --button-line-height: 1.5;
+    --button-padding: 0.375rem 0.75rem;
+    --button-border-radius: 0.375rem;
+    --button-font-weight: 500;
+  }
+
+  :where(
+    button,
+    input[type='button'],
+    input[type='submit'],
+    input[type='reset']
+  ) {
+    margin: 0;
+    font: inherit;
+    letter-spacing: inherit;
+    /*
+     * 暂不启用 transition，保留以下声明供效果对比。
+     * transition-property: background-color, border-color, color;
+     * transition-duration: 150ms;
+     */
+    display: inline-block;
+    text-align: center;
+    text-transform: none;
+    font-family: var(--button-font-family, inherit);
+    font-size: var(--button-font-size);
+    padding: var(--button-padding);
+    border: var(--button-border-width) solid var(--button-border-color);
+    border-radius: var(--button-border-radius);
+    background-color: var(--button-background-color);
+    color: var(--button-color);
+    font-weight: var(--button-font-weight);
+    line-height: var(--button-line-height);
+
+    &:where(:enabled) {
+      cursor: pointer;
+    }
+    &:where(:focus-visible) {
+      outline-color: var(
+        --button-focus-outline-color,
+        light-dark(
+          var(--accent-color),
+          color-mix(in oklab, var(--accent-color), white 35%)
+        )
+      );
+    }
+
+    &:where(:hover:not(:disabled)) {
+      background-color: var(
+        --button-hover-background-color,
+        color-mix(
+          in srgb,
+          var(--button-background-color) 94%,
+          light-dark(#000, #fff)
+        )
+      );
+    }
+    &:where(:active:not(:disabled)) {
+      background-color: var(
+        --button-active-background-color,
+        color-mix(
+          in srgb,
+          var(--button-background-color) 88%,
+          light-dark(#000, #fff)
+        )
+      );
+    }
+
+    &:where(:disabled) {
+      cursor: not-allowed;
+      color: revert-layer;
+      background-color: revert-layer;
+      border-color: revert-layer;
+    }
+  }
+
+  @media (forced-colors: active) {
+    :where(
+      button,
+      input[type='button'],
+      input[type='submit'],
+      input[type='reset']
+    ) {
+      border-color: ButtonText;
+
+      &:where(:focus-visible) {
+        outline-color: Highlight;
+      }
+    }
+  }
+}
