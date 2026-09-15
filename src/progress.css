@@ -1,0 +1,112 @@
+/*
+ * progress 的默认样式包括 appearance、display、vertical-align、inline-size 和 block-size。
+ * Chromium 和 WebKit 还声明 box-sizing，Firefox 为非原生外观声明 border、background-color 和 overflow。
+ * 轨道和填充部件各有尺寸及 background-color，原生 border-radius 和 :indeterminate 动画由平台绘制。
+ * Unism 绘制轨道和填充以统一 block-size，:indeterminate 使用 CSS animation。
+ * https://html.spec.whatwg.org/multipage/rendering.html#the-progress-element-2
+ * https://github.com/chromium/chromium/blob/main/third_party/blink/renderer/core/html/resources/html.css
+ * https://github.com/mozilla-firefox/firefox/blob/main/layout/style/res/forms.css
+ */
+@layer unism {
+  :where(:root) {
+    --progress-background-color: light-dark(#f8fafc, #172235);
+    --progress-border-color: light-dark(#8494a7, #64748b);
+    --progress-border-width: 1px;
+    --progress-block-size: 0.5rem;
+    --progress-border-radius: 0.5rem;
+    --progress-inline-size: 10rem;
+  }
+
+  :where(progress) {
+    box-sizing: border-box;
+    display: inline-block;
+    accent-color: light-dark(
+      var(--accent-color),
+      color-mix(in oklab, var(--accent-color), white 15%)
+    );
+    inline-size: var(--progress-inline-size);
+    block-size: var(--progress-block-size);
+  }
+
+  /* forced-colors: active 时使用系统绘制。 */
+  @media (forced-colors: none) {
+    /*
+     * Firefox 在竖排且 direction: ltr 时，从底部填充 progress[value]。
+     * 保留这一行为，避免覆盖页面的 direction。
+     * https://bugzilla.mozilla.org/show_bug.cgi?id=1801791
+     */
+    :where(progress) {
+      appearance: none;
+      overflow: hidden;
+      border: var(--progress-border-width) solid var(--progress-border-color);
+      border-radius: var(--progress-border-radius);
+      background-color: var(--progress-background-color);
+
+      &::-webkit-progress-bar {
+        border-radius: var(--progress-border-radius);
+        background-color: var(--progress-background-color);
+      }
+      &::-webkit-progress-value {
+        border-radius: inherit;
+        background-color: var(
+          --progress-value-background-color,
+          light-dark(
+            var(--accent-color),
+            color-mix(in oklab, var(--accent-color), white 15%)
+          )
+        );
+      }
+      &::-moz-progress-bar {
+        border-radius: inherit;
+        background-color: var(
+          --progress-value-background-color,
+          light-dark(
+            var(--accent-color),
+            color-mix(in oklab, var(--accent-color), white 15%)
+          )
+        );
+      }
+      &:where(:indeterminate) {
+        /*
+         * offset-position 相对轨道定位，offset-anchor 相对填充部件定位。
+         * 同步改变两者，使填充始终留在轨道内，同一 animation 可用于横排和竖排。
+         */
+        &::-webkit-progress-value {
+          min-inline-size: 40%;
+          offset-path: ray(0deg) content-box;
+          offset-rotate: 0deg;
+          offset-position: 50% 50%;
+          offset-anchor: 50% 50%;
+          animation: unism-progress 1.5s ease-in-out infinite alternate;
+        }
+        &::-moz-progress-bar {
+          inline-size: 40%;
+          offset-path: ray(0deg) content-box;
+          offset-rotate: 0deg;
+          offset-position: 50% 50%;
+          offset-anchor: 50% 50%;
+          animation: unism-progress 1.5s ease-in-out infinite alternate;
+        }
+        @media (prefers-reduced-motion: reduce) {
+          &::-webkit-progress-value {
+            animation: none;
+          }
+          &::-moz-progress-bar {
+            animation: none;
+          }
+        }
+      }
+    }
+
+    @keyframes unism-progress {
+      from {
+        offset-position: 0% 0%;
+        offset-anchor: 0% 0%;
+      }
+      to {
+        offset-position: 100% 100%;
+        offset-anchor: 100% 100%;
+      }
+    }
+  }
+}

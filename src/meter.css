@@ -1,0 +1,94 @@
+/*
+ * meter 的默认样式包括 appearance、display、vertical-align、inline-size 和 block-size。
+ * Chromium 和 WebKit 还声明 box-sizing，Firefox 为轨道声明 background 和 overflow。
+ * 轨道及各取值区间的填充由不同部件绘制，background、border 和 border-radius 随实现变化。
+ * https://html.spec.whatwg.org/multipage/rendering.html#the-meter-element-2
+ * https://github.com/chromium/chromium/blob/main/third_party/blink/renderer/core/html/resources/html.css
+ * https://github.com/mozilla-firefox/firefox/blob/main/layout/style/res/forms.css
+ */
+@layer unism {
+  :where(:root) {
+    --meter-background-color: light-dark(#f8fafc, #172235);
+    --meter-border-color: light-dark(#8494a7, #64748b);
+    --meter-border-width: 1px;
+    --meter-even-less-good-background-color: light-dark(#b52b34, #ff9195);
+    --meter-block-size: 0.5rem;
+    --meter-border-radius: 0.5rem;
+    --meter-suboptimum-background-color: #b17d14;
+    --meter-inline-size: 10rem;
+  }
+
+  :where(meter) {
+    box-sizing: border-box;
+    display: inline-block;
+    inline-size: var(--meter-inline-size);
+    block-size: var(--meter-block-size);
+  }
+
+  /* forced-colors: active 时使用系统绘制。 */
+  @media (forced-colors: none) {
+    /*
+     * Firefox 在竖排且 direction: ltr 时，从底部填充 meter。
+     * 保留这一行为，避免覆盖页面的 direction。
+     * https://bugzilla.mozilla.org/show_bug.cgi?id=1801791
+     */
+    :where(meter) {
+      appearance: none;
+      overflow: hidden;
+      border: var(--meter-border-width) solid var(--meter-border-color);
+      border-radius: var(--meter-border-radius);
+      background-color: var(--meter-background-color);
+      background-image: none;
+
+      &::-webkit-meter-bar {
+        /* Chromium 的 ::-webkit-meter-bar 默认只占内部 grid 的中间一行。 */
+        grid-row: 1 / -1;
+        block-size: 100%;
+        border: 0;
+        border-radius: var(--meter-border-radius);
+        background-color: var(--meter-background-color);
+        background-image: none;
+      }
+      &::-webkit-meter-optimum-value,
+      &::-webkit-meter-suboptimum-value,
+      &::-webkit-meter-even-less-good-value {
+        border-radius: inherit;
+        background-image: none;
+      }
+      &::-webkit-meter-optimum-value {
+        background-color: var(
+          --meter-optimum-background-color,
+          light-dark(
+            var(--accent-color),
+            color-mix(in oklab, var(--accent-color), white 15%)
+          )
+        );
+      }
+      &::-webkit-meter-suboptimum-value {
+        background-color: var(--meter-suboptimum-background-color);
+      }
+      &::-webkit-meter-even-less-good-value {
+        background-color: var(--meter-even-less-good-background-color);
+      }
+      &::-moz-meter-bar {
+        background-image: none;
+        border-radius: inherit;
+      }
+      &:-moz-meter-optimum::-moz-meter-bar {
+        background-color: var(
+          --meter-optimum-background-color,
+          light-dark(
+            var(--accent-color),
+            color-mix(in oklab, var(--accent-color), white 15%)
+          )
+        );
+      }
+      &:-moz-meter-sub-optimum::-moz-meter-bar {
+        background-color: var(--meter-suboptimum-background-color);
+      }
+      &:-moz-meter-sub-sub-optimum::-moz-meter-bar {
+        background-color: var(--meter-even-less-good-background-color);
+      }
+    }
+  }
+}
