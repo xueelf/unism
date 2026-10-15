@@ -31,6 +31,15 @@
 @import './table/td.css';
 @import './iframe.css';
 @import './input/index.css';
+@import './input/button.css';
+@import './input/search.css';
+@import './input/date.css';
+@import './input/color.css';
+@import './input/file.css';
+@import './input/checkbox.css';
+@import './input/radio.css';
+@import './input/switch.css';
+@import './input/range.css';
 @import './button.css';
 @import './select.css';
 @import './textarea.css';
