@@ -1,6 +1,7 @@
 /*
- * html 和 body 默认为 display: block，body 的默认 margin 为 8px，这里重置为 0。
- * hidden 使用 display: none，until-found 使用 content-visibility 隐藏内容。
+ * body 默认 margin 为 8px，这里重置为 0。
+ * [hidden] 使用 display: none，[hidden='until-found' i] 使用 content-visibility 隐藏内容。
+ * embed[hidden] 由浏览器将 width 和 height 归零，保留该行为。
  * popover 的默认样式包括 display、position、inset、width、height、margin、border、padding、
  * overflow、background-color 和 color，border-radius 是 Unism 添加的样式。
  * 全局属性规则在标签样式之后加载，保证 hidden 和 popover 的显隐行为。
@@ -37,7 +38,7 @@
     display: none;
   }
 
-  :where([hidden]:not([hidden='until-found' i])) {
+  :where([hidden]:not([hidden='until-found' i], embed)) {
     display: none;
   }
 }
