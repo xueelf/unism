@@ -1,6 +1,6 @@
 /*
  * input.css 先于各类型加载，switch.css 在 checkbox.css 之后覆盖开关样式。
- * forced-colors: active 的 appearance 和 content 规则最后生效，避免后续 ::before 恢复自绘标记。
+ * 各类型在文件内处理 forced-colors: active，按需引入时也能恢复原生外观。
  */
 @import './input.css';
 @import './button.css';
@@ -12,14 +12,3 @@
 @import './radio.css';
 @import './switch.css';
 @import './range.css';
-
-@layer unism {
-  @media (forced-colors: active) {
-    :where(input[type='checkbox'], input[type='radio']) {
-      appearance: auto;
-    }
-    :where(input[type='checkbox'], input[type='radio'])::before {
-      content: none;
-    }
-  }
-}

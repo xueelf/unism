@@ -3,6 +3,8 @@
  * padding、border、background-color 和 font 等声明与 --button-* 变量集中在 ../button.css。
  * https://html.spec.whatwg.org/multipage/rendering.html#the-input-element-as-a-button
  */
+@import '../button.css';
+
 @layer unism {
   :where(input[type='button'], input[type='submit'], input[type='reset']) {
     appearance: none;

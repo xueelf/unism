@@ -87,6 +87,10 @@
     :where(input[type='checkbox'][role='switch']) {
       width: var(--input-checkbox-width);
       height: var(--input-checkbox-height);
+
+      &::before {
+        content: none;
+      }
     }
   }
 }

@@ -81,4 +81,13 @@
       );
     }
   }
+
+  @media (forced-colors: active) {
+    :where(input[type='checkbox']) {
+      appearance: auto;
+    }
+    :where(input[type='checkbox'])::before {
+      content: none;
+    }
+  }
 }
