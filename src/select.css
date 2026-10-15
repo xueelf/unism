@@ -1,10 +1,12 @@
+@import './global.css';
+
 /*
  * select 的默认样式包括 appearance、box-sizing、font、color、background-color、border、padding 和 cursor。
  * size、multiple 和 option 内容参与尺寸计算，箭头、选项及选择行为由浏览器提供。
  * 箭头沿用 select 的 color。
  * https://html.spec.whatwg.org/multipage/rendering.html#the-select-element-2
  */
-@layer unism {
+@layer unism.elements {
   :where(:root) {
     --select-background-color: light-dark(#ffffff, #0f172a);
     --select-border-color: light-dark(#8494a7, #64748b);

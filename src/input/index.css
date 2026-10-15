@@ -1,3 +1,5 @@
+@import '../global.css';
+
 /*
  * input 的原生默认样式包括 appearance、display、padding、border、
  * background-color、color、font 和 cursor，margin、box-sizing、width 和 height 随 type 不同。
@@ -5,7 +7,7 @@
  * 按钮型 input 的专属规则在 button.css，共享的按钮声明在 ../button.css。
  * https://html.spec.whatwg.org/multipage/rendering.html#the-input-element-as-a-text-entry-widget
  */
-@layer unism {
+@layer unism.elements {
   :where(:root) {
     --input-background-color: light-dark(#ffffff, #0f172a);
     --input-border-color: light-dark(#8494a7, #64748b);

@@ -1,10 +1,12 @@
+@import '../global.css';
+
 /*
  * input[type='checkbox'] 的原生外观包括 appearance、margin、width、height 和 border。
  * :checked、:indeterminate 和 :disabled 的外观由浏览器或系统主题绘制。
  * 与 radio 共用的规则在 index.css，开关规则在 switch.css。
  * https://html.spec.whatwg.org/multipage/rendering.html#the-input-element-as-a-checkbox-and-radio-button-widgets
  */
-@layer unism {
+@layer unism.elements {
   :where(:root) {
     --input-checkbox-margin-inline-end: 0.5rem;
     --input-checkbox-height: 1rem;

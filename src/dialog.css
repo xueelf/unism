@@ -1,10 +1,12 @@
+@import './global.css';
+
 /*
  * dialog 的默认样式包括 display、position、inset、width、height、margin、border、padding、
  * background-color 和 color，:modal 另有 overflow、max-width 和 max-height。
  * ::backdrop 默认设置 background-color，border-radius 是 Unism 添加的样式。
  * https://html.spec.whatwg.org/multipage/rendering.html#flow-content-3
  */
-@layer unism {
+@layer unism.elements {
   :where(:root) {
     --dialog-backdrop-background-color: #0f172a80;
     --dialog-background-color: light-dark(#ffffff, #0f172a);

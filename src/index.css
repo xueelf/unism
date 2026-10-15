@@ -1,7 +1,3 @@
-/*
- * input/button.css 引入共享的 button.css，排在 input/index.css 之后。
- * root.css 最后加载，保证 hidden 和 popover 规则优先于标签样式。
- */
 @import './heading/h1.css';
 @import './heading/h2.css';
 @import './heading/h3.css';
@@ -49,4 +45,3 @@
 @import './dialog.css';
 @import './progress.css';
 @import './meter.css';
-@import './root.css';

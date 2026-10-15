@@ -1,8 +1,10 @@
+@import '../global.css';
+
 /*
  * h6 的原生样式包含 display、margin-block、margin-inline、font-size、font-weight 和 unicode-bidi。
  * https://html.spec.whatwg.org/multipage/rendering.html#sections-and-headings
  */
-@layer unism {
+@layer unism.elements {
   :where(:root) {
     --h6-margin-block: 1.5em 0.5em;
     --h6-font-size: 1rem;

@@ -1,9 +1,11 @@
+@import '../global.css';
+
 /*
  * legend 的默认样式包括 padding-inline，Chromium 和 Firefox 还声明 display。
  * WebKit 另有 border 重置。
  * https://html.spec.whatwg.org/multipage/rendering.html#the-fieldset-and-legend-elements
  */
-@layer unism {
+@layer unism.elements {
   :where(:root) {
     --legend-padding-inline: 0.4em;
   }

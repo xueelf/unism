@@ -1,3 +1,5 @@
+@import './global.css';
+
 /*
  * summary 的默认样式包括 display、counter-increment、list-style-type、list-style-position 和 unicode-bidi。
  * details 的首个 summary 使用 disclosure 标记，open 状态影响 list-style-type。
@@ -5,7 +7,7 @@
  * https://html.spec.whatwg.org/multipage/rendering.html#the-details-and-summary-elements
  * https://github.com/chromium/chromium/blob/main/third_party/blink/renderer/core/html/resources/html.css
  */
-@layer unism {
+@layer unism.elements {
   :where(:root) {
     --summary-marker-color: currentColor;
   }

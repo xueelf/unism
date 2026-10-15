@@ -1,10 +1,12 @@
+@import './global.css';
+
 /*
  * textarea 的默认样式包括 appearance、display、padding、border、background-color、
  * color、font、resize、white-space、word-wrap 和 cursor。
  * ::placeholder、:disabled 和 :focus-visible 另有原生样式。
  * https://html.spec.whatwg.org/multipage/rendering.html#the-textarea-element-2
  */
-@layer unism {
+@layer unism.elements {
   :where(:root) {
     --textarea-background-color: light-dark(#ffffff, #0f172a);
     --textarea-border-color: light-dark(#8494a7, #64748b);

@@ -1,3 +1,5 @@
+@import './global.css';
+
 /*
  * button 与按钮型 input 的原生样式包括 padding、border、background-color、
  * color、font、text-align、appearance 和 box-sizing。
@@ -5,7 +7,7 @@
  * 两种 HTML 写法共用 --button-* 变量。
  * https://html.spec.whatwg.org/multipage/rendering.html#the-button-element-2
  */
-@layer unism {
+@layer unism.elements {
   :where(:root) {
     --button-background-color: light-dark(#ffffff, #1e293b);
     --button-border-color: light-dark(#cbd5e1, #475569);

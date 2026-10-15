@@ -1,9 +1,11 @@
+@import '../global.css';
+
 /*
  * ::-webkit-search-decoration 是搜索输入的原生装饰部件。
  * 移除该装饰，避免与 input 的 padding 叠加。
  * https://github.com/WebKit/WebKit/blob/main/Source/WebCore/css/html.css
  */
-@layer unism {
+@layer unism.elements {
   :where(input[type='search'])::-webkit-search-decoration {
     appearance: none;
   }

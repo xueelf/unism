@@ -1,9 +1,11 @@
+@import '../global.css';
+
 /*
  * ::file-selector-button 的原生样式包括 margin、padding、border、background-color、color 和 font。
  * :disabled 时使用原生 color、background-color 和 border-color。
  * https://html.spec.whatwg.org/multipage/rendering.html#the-input-element-as-a-file-upload-control
  */
-@layer unism {
+@layer unism.elements {
   :where(:root) {
     --input-file-selector-button-background-color: light-dark(#f8fafc, #172235);
     --input-file-selector-button-color: light-dark(#1e293b, #e2e8f0);

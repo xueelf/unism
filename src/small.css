@@ -1,8 +1,10 @@
+@import './global.css';
+
 /*
  * small 默认使用 font-size: smaller。
  * https://html.spec.whatwg.org/multipage/rendering.html#phrasing-content-3
  */
-@layer unism {
+@layer unism.elements {
   :where(:root) {
     --small-font-size: 0.875em;
   }

@@ -1,8 +1,10 @@
+@import './global.css';
+
 /*
  * iframe 的原生样式包含 border，嵌入内容由浏览器通过 overflow 裁剪。
  * https://html.spec.whatwg.org/multipage/rendering.html#embedded-content-rendering-rules
  */
-@layer unism {
+@layer unism.elements {
   :where(:root) {
     --iframe-border-color: light-dark(#8494a7, #64748b);
     --iframe-border-width: 1px;

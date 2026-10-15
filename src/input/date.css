@@ -1,10 +1,12 @@
+@import '../global.css';
+
 /*
  * date、datetime-local、month、time 和 week 使用原生日期时间字段。
  * ::-webkit-datetime-edit 系列伪元素具有 padding，::-webkit-date-and-time-value 另有 text-align。
  * :disabled 时使用原生 color、background-color 和 border-color。
  * https://github.com/WebKit/WebKit/blob/main/Source/WebCore/css/html.css
  */
-@layer unism {
+@layer unism.elements {
   :where(input)::-webkit-date-and-time-value {
     min-block-size: 1lh;
     text-align: start;

@@ -1,10 +1,12 @@
+@import '../global.css';
+
 /*
  * input[type='range'] 的默认外观包含轨道和滑块，尺寸及 background-color 由浏览器或系统主题提供。
  * Chromium 和 WebKit 的轨道与滑块对应 ::-webkit-slider-runnable-track、::-webkit-slider-thumb，
  * Firefox 对应 ::-moz-range-track、::-moz-range-thumb。数值、方向和键盘交互由浏览器处理。
  * https://html.spec.whatwg.org/multipage/rendering.html#the-input-element-as-a-range-control
  */
-@layer unism {
+@layer unism.elements {
   :where(:root) {
     --input-range-track-background-color: light-dark(#8494a7, #64748b);
     --input-range-block-size: 1.5rem;

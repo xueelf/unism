@@ -1,9 +1,11 @@
+@import '../global.css';
+
 /*
  * input[type='checkbox'][role='switch'] 保留 checkbox 的状态和表单行为。
  * ::before 绘制滑块，其 inline-size 和 block-size 独立于轨道。
  * forced-colors: active 时使用原生复选框。
  */
-@layer unism {
+@layer unism.elements {
   :where(:root) {
     --input-switch-background-color: light-dark(#8494a7, #64748b);
     --input-switch-border-color: light-dark(#8494a7, #64748b);

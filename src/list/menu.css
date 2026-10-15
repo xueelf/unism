@@ -1,9 +1,11 @@
+@import '../global.css';
+
 /*
  * menu 的原生样式包含 display、list-style-type、margin-block、padding-inline-start 和 unicode-bidi。
  * Gecko 还设置 counter-reset，嵌套列表另有 margin-block 规则。
  * https://html.spec.whatwg.org/multipage/rendering.html#lists
  */
-@layer unism {
+@layer unism.elements {
   :where(:root) {
     --menu-margin-block: 0 1rem;
     --menu-padding-inline-start: 1.5em;

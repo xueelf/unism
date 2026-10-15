@@ -1,10 +1,12 @@
+@import '../global.css';
+
 /*
  * fieldset 的默认样式包括 display、margin-inline、border、padding-block、
  * padding-inline 和 min-inline-size，默认 border-style 为 groove。
  * legend 处的缺口由浏览器布局处理，border-radius 是 Unism 添加的样式。
  * https://html.spec.whatwg.org/multipage/rendering.html#the-fieldset-and-legend-elements
  */
-@layer unism {
+@layer unism.elements {
   :where(:root) {
     --fieldset-border-color: light-dark(#8494a7, #64748b);
     --fieldset-border-width: 1px;

@@ -1,8 +1,10 @@
+@import '../global.css';
+
 /*
  * dd 的原生样式包含 display、margin-inline-start 和 unicode-bidi。
  * https://html.spec.whatwg.org/multipage/rendering.html#lists
  */
-@layer unism {
+@layer unism.elements {
   :where(:root) {
     --dd-margin-inline-start: 1.5em;
   }

@@ -1,3 +1,5 @@
+@import './global.css';
+
 /*
  * meter 的默认样式包括 appearance、display、vertical-align、inline-size 和 block-size。
  * Chromium 和 WebKit 还声明 box-sizing，Firefox 为轨道声明 background 和 overflow。
@@ -6,7 +8,7 @@
  * https://github.com/chromium/chromium/blob/main/third_party/blink/renderer/core/html/resources/html.css
  * https://github.com/mozilla-firefox/firefox/blob/main/layout/style/res/forms.css
  */
-@layer unism {
+@layer unism.elements {
   :where(:root) {
     --meter-background-color: light-dark(#f8fafc, #172235);
     --meter-border-color: light-dark(#8494a7, #64748b);
