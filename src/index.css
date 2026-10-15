@@ -1,6 +1,6 @@
 /*
- * 各模块共用 @layer unism。button 在 input 之后加载，覆盖按钮型 input 的公共样式。
- * root 最后加载，使跨标签属性规则优先于标签样式。
+ * input/button.css 引入共享的 button.css，排在 input/index.css 之后。
+ * root.css 最后加载，保证 hidden 和 popover 规则优先于标签样式。
  */
 @import './heading/h1.css';
 @import './heading/h2.css';
@@ -40,7 +40,6 @@
 @import './input/radio.css';
 @import './input/switch.css';
 @import './input/range.css';
-@import './button.css';
 @import './select.css';
 @import './textarea.css';
 @import './fieldset/fieldset.css';
