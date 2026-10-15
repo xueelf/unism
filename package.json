@@ -1,0 +1,29 @@
+{
+  "name": "unism",
+  "version": "0.1.0",
+  "description": "Consistent, customizable styles for native HTML elements.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xueelf/unism.git"
+  },
+  "license": "MIT",
+  "author": "Yuki <admin@yuki.sh>",
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.css",
+    "./*.css": "./dist/*.css"
+  },
+  "files": [
+    "dist"
+  ],
+  "devEngines": {
+    "runtime": {
+      "name": "bun",
+      "onFail": "warn"
+    },
+    "packageManager": {
+      "name": "bun",
+      "onFail": "warn"
+    }
+  }
+}
