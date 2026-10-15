@@ -1,7 +1,7 @@
 /*
  * summary 的默认样式包括 display、counter-increment、list-style-type、list-style-position 和 unicode-bidi。
  * details 的首个 summary 使用 disclosure 标记，open 状态影响 list-style-type。
- * ::marker 沿用 summary 的 color，:focus-visible 的 outline 来自浏览器默认规则。
+ * :focus-visible 的 outline 由浏览器提供。
  * https://html.spec.whatwg.org/multipage/rendering.html#the-details-and-summary-elements
  * https://github.com/chromium/chromium/blob/main/third_party/blink/renderer/core/html/resources/html.css
  */

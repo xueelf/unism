@@ -2,7 +2,6 @@
  * input[type='color'] 的原生样式包括 width、height、padding，内部色块另有 border。
  * ::-webkit-color-swatch 和 ::-moz-color-swatch 对应色块，
  * ::-webkit-color-swatch-wrapper 有独立的 padding。
- * 颜色选择器由浏览器提供。
  * https://html.spec.whatwg.org/multipage/rendering.html#the-input-element-as-a-color-well
  */
 @layer unism {

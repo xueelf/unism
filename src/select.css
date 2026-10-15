@@ -22,7 +22,7 @@
     font: inherit;
     letter-spacing: inherit;
     /*
-     * 暂不启用 transition，保留以下声明供效果对比。
+     * 默认不启用颜色过渡。
      * transition-property: background-color, border-color, color;
      * transition-duration: 150ms;
      */
@@ -38,10 +38,7 @@
     font-weight: var(--select-font-weight);
     line-height: var(--select-line-height);
 
-    /*
-     * Chromium 在 appearance: base-select 下改变了列表框的键盘行为，
-     * 因此带 size 或 multiple 时保留原生 appearance。
-     */
+    /* 带 size 或 multiple 时保留原生 appearance，避免影响行数和键盘操作。 */
     &:where(:not([size], [multiple])) {
       appearance: base-select;
     }
@@ -67,12 +64,8 @@
   }
 
   /*
-   * ::picker(select) 和 option 使用浏览器默认样式，以下声明暂不启用。
-   *
-   * 原生列表中，Chromium 和 Firefox 支持 option 的 height，WebKit 会忽略该属性。
-   * appearance: base-select 允许设置 option 的 height 和 padding，但列表的尺寸计算未计入这些值，
-   * 可能让 size 指定的行数显示不全。
-   * 待浏览器支持一致、size 行数计算正确后，再启用这些声明。
+   * 下方样式暂不启用。恢复前需验证 ::picker(select) 的浏览器支持，
+   * 并确认 option 的 height、padding 不影响 size 指定的行数。
    *
    * https://github.com/w3c/csswg-drafts/issues/12510
    * https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/::picker

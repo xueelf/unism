@@ -1,5 +1,5 @@
 /*
- * small 默认设置 font-size: smaller，color、font-family 和 font-weight 继承父元素。
+ * small 默认使用 font-size: smaller。
  * https://html.spec.whatwg.org/multipage/rendering.html#phrasing-content-3
  */
 @layer unism {

@@ -10,8 +10,7 @@
     text-align: start;
   }
 
-  /* Chromium 和 WebKit 的日期字段有额外 padding，会增加输入框的 block-size。 */
-
+  /* 清除日期字段的额外 padding，避免增加 input 的 block-size。 */
   :where(input)::-webkit-datetime-edit,
   :where(input)::-webkit-datetime-edit-fields-wrapper,
   :where(input)::-webkit-datetime-edit-year-field,

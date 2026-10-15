@@ -28,7 +28,7 @@
     font: inherit;
     letter-spacing: inherit;
     /*
-     * 暂不启用 transition，保留以下声明供效果对比。
+     * 默认不启用颜色过渡。
      * transition-property: background-color, border-color, color;
      * transition-duration: 150ms;
      */

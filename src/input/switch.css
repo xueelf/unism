@@ -42,7 +42,7 @@
         (var(--input-switch-block-size) - var(--input-switch-inline-size)) / 2
       );
       /*
-       * 暂不启用 transition，保留以下声明供效果对比。
+       * 默认不启用滑块的 transition。
        * transition: inset-inline-start 150ms ease;
        */
       border-radius: 50%;

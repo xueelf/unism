@@ -1,5 +1,5 @@
 /*
- * label 的默认样式包括 cursor，font、color 和 line-height 沿用继承值。
+ * Firefox 的 label 默认设置 cursor: default。
  * 未设置 for 时，cursor 根据内部控件的 :enabled、:disabled 状态设置。
  * https://github.com/mozilla-firefox/firefox/blob/main/layout/style/res/forms.css
  */
