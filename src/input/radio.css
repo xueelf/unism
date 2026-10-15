@@ -49,14 +49,11 @@
     );
     &::before {
       content: '';
+      inline-size: 0.45em;
+      block-size: 0.45em;
+      border-radius: 50%;
       background-color: var(--input-radio-indicator-background-color);
     }
-  }
-
-  :where(input[type='radio']:checked)::before {
-    inline-size: 0.45em;
-    block-size: 0.45em;
-    border-radius: 50%;
   }
 
   :where(input[type='radio']:disabled) {
