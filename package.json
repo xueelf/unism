@@ -1,7 +1,7 @@
 {
   "name": "unism",
   "version": "0.1.0",
-  "description": "Consistent, customizable styles for native HTML elements.",
+  "description": "A lightweight CSS library for consistent, modern styling of native HTML elements across browsers.",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/xueelf/unism.git"
