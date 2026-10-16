@@ -2,6 +2,13 @@
   "name": "unism",
   "version": "0.1.0",
   "description": "A lightweight CSS library for consistent, modern styling of native HTML elements across browsers.",
+  "keywords": [
+    "css",
+    "css-framework",
+    "html",
+    "css-variables",
+    "dark-mode"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/xueelf/unism.git"
