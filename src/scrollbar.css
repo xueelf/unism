@@ -1,0 +1,22 @@
+/*
+ * 滚动条由浏览器或系统绘制，仅通过 scrollbar-color 和 scrollbar-width 调整配色与粗细。
+ * 形状、显隐和交互保留系统默认行为，forced-colors: active 时使用系统配色。
+ * https://drafts.csswg.org/css-scrollbars/
+ */
+@layer unism.elements {
+  :where(:root) {
+    --scrollbar-color: light-dark(#8494a7, #64748b) transparent;
+    --scrollbar-width: auto;
+  }
+
+  :where(*) {
+    scrollbar-color: var(--scrollbar-color);
+    scrollbar-width: var(--scrollbar-width);
+  }
+
+  @media (forced-colors: active) {
+    :where(*) {
+      scrollbar-color: auto;
+    }
+  }
+}
